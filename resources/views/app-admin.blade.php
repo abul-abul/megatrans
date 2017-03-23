@@ -76,52 +76,134 @@
         <div class="page-sidebar navbar-collapse collapse">
 
             <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                @if(isset($activeworkshop) || isset($activiinyourspace) || isset($activephototour) || isset($activeaboutartist) || isset($activeconnect) || isset($activeHome) || isset($gallery_category_actiove))
+                @if(isset($activepartners))
                 <li class="start active open">
                 @else
                 <li class="start">
                 @endif
                     <a href="javascript:;">
                         <i class="icon-docs"></i>
-                        <span class="title">Pages</span>
+                        <span class="title">Partners</span>
                         <span class="selected"></span>
                         <span class="arrow open"></span>
                     </a>
                     <ul class="sub-menu">
-                        @if(isset($activeHome))
+                        @if(isset($activepartners))
                             <li class="active">
                         @else
                             <li>
                         @endif
-                            <a href="#">
-                                Home
+                            <a href="{{action('AdminController@getPartners')}}">
+                                Add Partners
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                Work Shop
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
-               
-                <li class="start active open">
-                
+                @if(isset($galleryactive))
+                    <li class="start active open">
+                @else
+                    <li class="start">
+                @endif
                     <a href="javascript:;">
-                        <i class="fa fa-file-image-o"></i>
+                        <i class="icon-docs"></i>
                         <span class="title">Gallery</span>
-                        <span class="arrow "></span>
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
                     </a>
                     <ul class="sub-menu">
-                       
+                        @if(isset($galleryactive))
+                            <li class="active">
+                        @else
                             <li>
-                          
-                                <a href="#">
-                                    Add Gallery
-                                </a>
-                            </li>
+                         @endif
+                            <a href="{{action('AdminController@getGallery')}}">
+                                 Gallery
+                            </a>
+                        </li>
                     </ul>
                 </li>
+
+                @if(isset($activeabout))
+                    <li class="start active open">
+                @else
+                    <li class="start">
+                        @endif
+                        <a href="javascript:;">
+                            <i class="icon-docs"></i>
+                            <span class="title">About</span>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            @if(isset($activeabout))
+                                <li class="active">
+                            @else
+                            <li>
+                                @endif
+                                <a href="{{action('AdminController@getAbout')}}">
+                                    About
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    @if(isset($requestactive))
+                        <li class="start active open">
+                    @else
+                        <li class="start">
+                            @endif
+                            <a href="javascript:;">
+                                <i class="icon-docs"></i>
+                                <span class="title">Request</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+
+                                <span style="color: red;float: right;font-size: 19px;font-weight: bold;margin: -3px 10px 0px 0px;display: block;">
+                                    {{count($request_active)}}
+                                </span>
+
+                            </a>
+                            <ul class="sub-menu">
+                                @if(isset($requestactive))
+                                 <li class="active">
+                                @else
+                                <li>
+                                    @endif
+                                    <a href="{{action('AdminController@getRequest')}}">
+                                        Request
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @if(isset($contactactive))
+                            <li class="start active open">
+                        @else
+                            <li class="start">
+                                @endif
+                                <a href="javascript:;">
+                                    <i class="icon-docs"></i>
+                                    <span class="title">Contact</span>
+                                    <span class="selected"></span>
+                                    <span class="arrow open"></span>
+
+                                    <span style="color: red;float: right;font-size: 19px;font-weight: bold;margin: -3px 10px 0px 0px;display: block;">
+                                        {{count($contact_active)}}
+                                    </span>
+
+                                </a>
+                                <ul class="sub-menu">
+                                    @if(isset($contactactive))
+                                        <li class="active">
+                                    @else
+                                    <li>
+                                        @endif
+                                        <a href="{{action('AdminController@getConntact')}}">
+                                            Contact
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
             </ul>
             <!-- END SIDEBAR MENU -->

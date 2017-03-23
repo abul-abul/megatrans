@@ -23,6 +23,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'App\Contracts\GalleryInterface',
+            'App\Services\GalleryService'
+        );
+        $this->app->bind(
+            'App\Contracts\PartnersInterface',
+            'App\Services\PartnersService'
+        );
+        $this->app->bind(
+            'App\Contracts\AboutInterface',
+            'App\Services\AboutService'
+        );
+        $this->app->bind(
+            'App\Contracts\RequestInterface',
+            'App\Services\RequestService'
+        );
+        $this->app->bind(
+            'App\Contracts\ContactInterface',
+            'App\Services\ContactService'
+        );
     }
 }
