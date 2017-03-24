@@ -205,6 +205,31 @@
                                 </ul>
                             </li>
 
+
+                            @if(isset($blogactive))
+                                <li class="start active open">
+                            @else
+                                <li class="start">
+                                    @endif
+                                    <a href="javascript:;">
+                                        <i class="icon-docs"></i>
+                                        <span class="title">Useful Information</span>
+                                        <span class="selected"></span>
+                                        <span class="arrow open"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        @if(isset($blogactive))
+                                            <li class="active">
+                                        @else
+                                        <li>
+                                            @endif
+                                            <a href="{{action('AdminController@getBlog')}}">
+                                                Useful Information
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

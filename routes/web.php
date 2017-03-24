@@ -55,5 +55,17 @@ Route::get('admin/contact','AdminController@getConntact');
 Route::get('admin/delete-contact/{id}','AdminController@getDeleteContact');
 Route::get('admin/view-contact/{id}','AdminController@getViewContact');
 
+//Blog
+Route::get('admin/blog-images','AdminController@getBlog');
+Route::get('admin/add-blog-images','AdminController@getAddBlog');
+Route::post('admin/add-blog-images','AdminController@postAddBlog');
+Route::get('admin/edit-blog-images/{id}','AdminController@getEditBlog');
+Route::get('admin/blog-images-delete/{id}','AdminController@getBlogDelete');
+Route::post('admin/edit-blog','AdminController@postEditBlog');
+Route::get('admin/view-blog-gallery/{id}','AdminController@getViewBlogGallery');
+Route::get('admin/blog-gallery-delete/{id}','AdminController@getBlogGalleryDelete');
+
+
+
 
 

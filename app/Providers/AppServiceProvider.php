@@ -43,5 +43,13 @@ class AppServiceProvider extends ServiceProvider
             'App\Contracts\ContactInterface',
             'App\Services\ContactService'
         );
+        $this->app->bind(
+            'App\Contracts\BlogInterface',
+            'App\Services\BlogService'
+        );
+        $this->app->bind(
+            'App\Contracts\BlogGalleryInterface',
+            'App\Services\BlogGalleryService'
+        );
     }
 }
