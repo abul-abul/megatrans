@@ -12,7 +12,8 @@ use App\Contracts\RequestInterface;
 use App\Contracts\ContactInterface;
 use App\Contracts\BlogInterface;
 use App\Contracts\BlogGalleryInterface;
-
+use App\Contracts\ServiceInterface;
+use App\Contracts\ServiceSkillInterface;
 use View;
 use Session;
 use Validator;
@@ -57,7 +58,7 @@ class AdminController extends BaseController
             return redirect()->action('AdminController@getDashboard');
         }else{
             return redirect()->back()->with('error', 'Invalid login or password');
-        }	
+        }
     }
 
     /**
@@ -611,4 +612,295 @@ class AdminController extends BaseController
         return redirect()->back()->with('message','Deleted Successfully');
     }
 
+    /**
+     * @param ServiceInterface $serviceRepo
+     * @return View
+     */
+    public function getService(ServiceInterface $serviceRepo)
+    {
+        $result = $serviceRepo->getAll();
+        $data = [
+            'activeservice' => 1,
+            'services' => $result
+        ];
+        return view('admin.service.service',$data);
+    }
+
+    /**
+     * @return View
+     */
+    public function getAddService()
+    {
+        $data = [
+            'activeservice' => 1,
+        ];
+        return view('admin.service.add-service',$data);
+    }
+
+    /**
+     * @param Request $request
+     * @param ServiceInterface $serviceRepo
+     * @param ServiceSkillInterface $skillRepo
+     * @return mixed
+     */
+    public function postAddService(request $request,ServiceInterface $serviceRepo,ServiceSkillInterface $skillRepo)
+    {
+        $result = $request->all();
+        $validator = Validator::make($result, [
+            'images' => 'required',
+            'images_icon' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }else{
+            unset($result['_token']);
+            $logoFile = $result['images']->getClientOriginalExtension();
+            $name = str_random(12);
+            $path = public_path() . '/assets/images/service-images';
+            $result_move = $result['images']->move($path, $name.'.'.$logoFile);
+            $article_images = $name.'.'.$logoFile;
+            $result['images'] = $article_images;
+
+            $logoFile1 = $result['images_icon']->getClientOriginalExtension();
+            $name1 = str_random(12);
+            $path1 = public_path() . '/assets/images/service-images';
+            $result_move1 = $result['images_icon']->move($path1, $name1 .'.'.$logoFile1);
+            $article_images1 = $name1.'.'.$logoFile1;
+            $result['images_icon'] = $article_images1;
+
+            $serviceRow = $serviceRepo->createData($result);
+
+            $dataSkill = [
+                'skill_en' => $result['skill_en'],
+                'skill_arm' => $result['skill_arm'],
+                'skill_rus' => $result['skill_rus'],
+                'service_id' => $serviceRow['id'],
+            ];
+            $skillRepo->createData($dataSkill);
+
+            $skill_key_array = [];
+            foreach($result as $key=>$value){
+                if(count(explode('skill_en_',$key)) > 1){
+                    array_push($skill_key_array,$key);
+                }
+                if(count(explode('skill_arm_',$key)) > 1){
+                    array_push($skill_key_array,$key);
+                }
+                if(count(explode('skill_rus_',$key)) > 1){
+                    array_push($skill_key_array,$key);
+                }
+            }
+            $array_skill_value = [];
+            foreach ($skill_key_array as $key=>$value){
+                array_push($array_skill_value,$result[$value]);
+            }
+
+            for($i=1;$i<=count($array_skill_value);$i++) {
+                $dataChild = [];
+                if(isset($result['skill_en_' . $i]) && $result['skill_en_' . $i] != null){
+                    $dataChild['skill_en'] = $result['skill_en_' . $i];
+                }
+                if(isset($result['skill_arm_' . $i]) && $result['skill_arm_' . $i] != null){
+                    $dataChild['skill_arm'] = $result['skill_arm_' . $i];
+                }
+                if(isset($result['skill_rus_' . $i]) && $result['skill_rus_' . $i] != null){
+                    $dataChild['skill_rus'] = $result['skill_rus_' . $i];
+                }
+                $dataChild['service_id'] = $serviceRow['id'];
+                $skillRepo->createData($dataChild);
+                $skillRepo->getDeleteEmptySkills($serviceRow['id']);
+            }
+        }
+        return redirect()->action('AdminController@getService')->with('message','You added Service');
+    }
+
+    /**
+     * @param $id
+     * @param ServiceInterface $serviceRepo
+     * @param ServiceSkillInterface $skillRepo
+     * @return mixed
+     */
+    public function getServiceDelete($id,ServiceInterface $serviceRepo,ServiceSkillInterface $skillRepo)
+    {
+        $service = $serviceRepo->getOne($id);
+        $skills = $skillRepo->getService($id);
+        $filename = public_path() . '/assets/images/service-images/' . $service['images'];
+        $filename_icon = public_path() . '/assets/images/service-images/' . $service['images_icon'];
+        File::delete($filename);
+        File::delete($filename_icon);
+        $serviceRepo->deleteData($id);
+        foreach ($skills as $skill){
+            $skillRepo->deleteData($skill['id']);
+        }
+        return redirect()->back()->with('message','Deleted Successfully');
+    }
+
+    /**
+     * @param $id
+     * @param ServiceInterface $serviceRepo
+     * @param ServiceSkillInterface $skillRepo
+     * @return View
+     */
+    public function getEditService($id,ServiceInterface $serviceRepo,ServiceSkillInterface $skillRepo)
+    {
+        $service = $serviceRepo->getOne($id);
+        $skills = $skillRepo->getService($id);
+        $data = [
+            'service' => $service,
+            'skills' => $skills,
+            'activeservice' => 1
+        ];
+        return view('admin.service.edit-service',$data);
+    }
+
+    /**
+     * @param Request $request
+     * @param ServiceInterface $serviceRepo
+     * @return mixed
+     */
+    public function postEditService(request $request,ServiceInterface $serviceRepo)
+    {
+        $result = $request->all();
+        if(isset($result['images_icon'])){
+            $row = $serviceRepo->getOne($result['id']);
+            $path = public_path() . '/assets/images/service-images/' . $row['images_icon'];
+            File::delete($path);
+            $logoFile = $result['images_icon']->getClientOriginalExtension();
+            $name = str_random(12);
+            $path = public_path() . '/assets/images/service-images';
+            $result_move = $result['images_icon']->move($path, $name.'.'.$logoFile);
+            $gallery_images = $name.'.'.$logoFile;
+            $result['images_icon'] = $gallery_images;
+            $serviceRepo->getUpdateData($result['id'],$result);
+        }
+
+        if(isset($result['images'])){
+            $row = $serviceRepo->getOne($result['id']);
+            $path = public_path() . '/assets/images/service-images/' . $row['images'];
+            File::delete($path);
+            $logoFile = $result['images']->getClientOriginalExtension();
+            $name = str_random(12);
+            $path = public_path() . '/assets/images/service-images';
+            $result_move = $result['images']->move($path, $name.'.'.$logoFile);
+            $gallery_images = $name.'.'.$logoFile;
+            $result['images'] = $gallery_images;
+            $serviceRepo->getUpdateData($result['id'],$result);
+        }
+        $serviceRepo->getUpdateData($result['id'],$result);
+
+        return redirect()->action('AdminController@getService')->with('message','Edit was succesfully');
+    }
+
+    /**
+     * @param $id
+     * @param ServiceSkillInterface $skillRepo
+     * @return View
+     */
+    public function getViewSkills($id,ServiceSkillInterface $skillRepo)
+    {
+        $result = $skillRepo->getService($id);
+        $data = [
+            'id' => $id,
+            'activeservice' => 1,
+            'skills' => $result
+        ];
+        return view('admin.service.view-skills',$data);
+    }
+
+    /**
+     * @param $id
+     * @param ServiceSkillInterface $skillRepo
+     * @return mixed
+     */
+    public function getSkillDelete($id,ServiceSkillInterface $skillRepo)
+    {
+        $skillRepo->deleteData($id);
+        return redirect()->back()->with('message','Skill deleted');
+    }
+
+    /**
+     * @param $id
+     * @param ServiceSkillInterface $skillRepo
+     * @return View
+     */
+    public function getEditSkill($id,ServiceSkillInterface $skillRepo)
+    {
+        $row = $skillRepo->getOne($id);
+        $data = [
+            'activeservice' => 1,
+             'skill' => $row,
+        ];
+        return view('admin.service.edit-skill',$data);
+    }
+
+    /**
+     * @param Request $request
+     * @param ServiceSkillInterface $skillRepo
+     * @return mixed
+     */
+    public function postEditSkill(request $request,ServiceSkillInterface $skillRepo)
+    {
+        $result = $request->all();
+        $skillRepo->getUpdateData($result['id'],$result);
+        return redirect()->back()->with('message','Update is succesfully');
+    }
+
+    /**
+     * @param $id
+     * @return View
+     */
+    public function getAddSkill($id)
+    {
+        $data = [
+            'id' => $id,
+            'activeservice' => 1,
+        ];
+        return view('admin.service.add-skill',$data);
+    }
+
+    public function postAddSkill(request $request,ServiceSkillInterface $skillRepo)
+    {
+        $result = $request->all();
+        $dataSkill = [
+            'skill_en' => $result['skill_en'],
+            'skill_arm' => $result['skill_arm'],
+            'skill_rus' => $result['skill_rus'],
+            'service_id' => $result['id'],
+        ];
+        $skillRepo->createData($dataSkill);
+
+        $skill_key_array = [];
+        foreach($result as $key=>$value){
+            if(count(explode('skill_en_',$key)) > 1){
+                array_push($skill_key_array,$key);
+            }
+            if(count(explode('skill_arm_',$key)) > 1){
+                array_push($skill_key_array,$key);
+            }
+            if(count(explode('skill_rus_',$key)) > 1){
+                array_push($skill_key_array,$key);
+            }
+        }
+        $array_skill_value = [];
+        foreach ($skill_key_array as $key=>$value){
+            array_push($array_skill_value,$result[$value]);
+        }
+
+        for($i=1;$i<=count($array_skill_value);$i++) {
+            $dataChild = [];
+            if(isset($result['skill_en_' . $i]) && $result['skill_en_' . $i] != null){
+                $dataChild['skill_en'] = $result['skill_en_' . $i];
+            }
+            if(isset($result['skill_arm_' . $i]) && $result['skill_arm_' . $i] != null){
+                $dataChild['skill_arm'] = $result['skill_arm_' . $i];
+            }
+            if(isset($result['skill_rus_' . $i]) && $result['skill_rus_' . $i] != null){
+                $dataChild['skill_rus'] = $result['skill_rus_' . $i];
+            }
+            $dataChild['service_id'] = $result['id'];
+            $skillRepo->createData($dataChild);
+            $skillRepo->getDeleteEmptySkills($result['id']);
+        }
+        return redirect()->action('AdminController@getViewSkills',$result['id'])->with('message','you added new skill');
+    }
 }

@@ -65,6 +65,22 @@ Route::post('admin/edit-blog','AdminController@postEditBlog');
 Route::get('admin/view-blog-gallery/{id}','AdminController@getViewBlogGallery');
 Route::get('admin/blog-gallery-delete/{id}','AdminController@getBlogGalleryDelete');
 
+//Service
+Route::get('admin/service','AdminController@getService');
+Route::get('admin/add-service','AdminController@getAddService');
+Route::post('admin/add-service','AdminController@postAddService');
+Route::get('admin/service-delete/{id}','AdminController@getServiceDelete');
+Route::get('admin/edit-service/{id}','AdminController@getEditService');
+Route::post('admin/edit-service','AdminController@postEditService');
+Route::get('admin/view-skills/{id}','AdminController@getViewSkills');
+Route::get('admin/skill-delete/{id}','AdminController@getSkillDelete');
+Route::get('admin/edit-skill/{id}','AdminController@getEditSkill');
+Route::post('admin/edit-skill','AdminController@postEditSkill');
+Route::get('admin/add-skill/{id}','AdminController@getAddSkill');
+Route::post('admin/add-skill','AdminController@postAddSkill');
+
+
+
 
 
 

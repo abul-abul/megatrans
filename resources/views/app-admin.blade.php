@@ -230,6 +230,30 @@
                                     </ul>
                                 </li>
 
+                                @if(isset($activeservice))
+                                <li class="start active open">
+                                @else
+                                <li class="start">
+                                    @endif
+                                    <a href="javascript:;">
+                                        <i class="icon-docs"></i>
+                                        <span class="title">Service</span>
+                                        <span class="selected"></span>
+                                        <span class="arrow open"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        @if(isset($activeservice))
+                                            <li class="active">
+                                        @else
+                                        <li>
+                                            @endif
+                                            <a href="{{action('AdminController@getService')}}">
+                                                Service
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
