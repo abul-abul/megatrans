@@ -13,7 +13,7 @@ class CreateBlogTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog-images', function (Blueprint $table) {
+        Schema::create('blog', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title_en')->nullable();
             $table->string('title_rus')->nullable();
@@ -34,6 +34,6 @@ class CreateBlogTable extends Migration
      */
     public function down()
     {
-        Schema::drop('blog-images');
+        Schema::drop('blog');
     }
 }
