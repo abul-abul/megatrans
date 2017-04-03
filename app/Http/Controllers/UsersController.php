@@ -47,8 +47,9 @@ class UsersController extends BaseController
         $gallery = $galleryRepo->getAll();
         $partners = $partnerRepo->getAll();
         $data = [
+            'homeactive' => 1,
             'services' => $service,
-            'gallery' => $gallery,
+            'gallerys' => $gallery,
             'partners' => $partners
         ];
         return view('users.home.home',$data);

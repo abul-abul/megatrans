@@ -11,7 +11,7 @@ Route::post('request','UsersController@postRequest');
 Route::get('contact','UsersController@getContact');
 Route::post('contact','UsersController@postContact');
 Route::get('about','UsersController@getAbout');
-Route::get('service','UsersController@getService');
+Route::get('service/{id}','UsersController@getService');
 
 
 
