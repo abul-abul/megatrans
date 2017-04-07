@@ -83,9 +83,9 @@
                     @endif
                 </p>
                 <a href="{{action('UsersController@getService',$service->id)}}" class="small_slider_more_link">
-							<span class="small_slider_more_text">
-								ԱՎԵԼԻՆ
-							</span>
+					<span class="small_slider_more_text">
+						ԱՎԵԼԻՆ
+					</span>
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
             </div>
