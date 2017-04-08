@@ -52,7 +52,7 @@ function openTracking(url) {
     return wnd;
 }
 
-function trackNorasia(num, type) {alert()
+function trackNorasia(num, type) {
     var url = "http://www.csavnorasia.com/rastreo/rastreo.nsf/yourtrace?openagent&" + num;
     openTracking(url);
 }

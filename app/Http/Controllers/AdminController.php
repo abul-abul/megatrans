@@ -26,9 +26,9 @@ class AdminController extends BaseController
 	/**
      * AdminController constructor.
      */
-    public function __construct(ContactInterface $contactRepo,RequestInterface $requestRepo)
+    public function __construct(ContactInterface $contactRepo,RequestInterface $requestRepo,ServiceInterface $serviceRepo)
     {
-        parent::__construct($contactRepo,$requestRepo);
+        parent::__construct($contactRepo,$requestRepo,$serviceRepo);
         $this->middleware('authadmin', ['except' => ['getLogin', 'postLogin','getLogout']]);
     }
 

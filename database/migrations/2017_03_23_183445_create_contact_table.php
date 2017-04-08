@@ -18,7 +18,7 @@ class CreateContactTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('team')->nullable();
-            $table->string('message')->nullable();
+            $table->longText('message')->nullable();
             $table->string('active_view')->nullable();
             $table->timestamps();
         });

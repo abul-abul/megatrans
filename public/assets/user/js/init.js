@@ -6,40 +6,9 @@ $(document).ready(function(){
 	$(".carousel-inner").children(":first").addClass("active");
 	$(".small_slider_place").children(":first").addClass("small_slider_child_full");
 	$(".carousel-indicators").children(":first").addClass("active");
-	$(".language_place").children(":first").addClass("lang_active");
 
-	// partbers slider
-	$("#flexiselDemo1").flexisel();
-	$("#flexiselDemo2").flexisel({
-		visibleItems: 6,
-		itemsToScroll: 1,
-		animationSpeed: 700,
-		infinite: true,
-		navigationTargetSelector: null,
-		autoPlay: {
-			enable: false,
-			interval: 5000,
-			pauseOnHover: true
-		},
-		responsiveBreakpoints: {
-			portrait: {
-				changePoint:600,
-				visibleItems: 1,
-				itemsToScroll: 1
-			},
-			landscape: {
-				changePoint:900,
-				visibleItems: 3,
-				itemsToScroll: 1
-			},
-			tablet: {
-				changePoint:1140,
-				visibleItems: 5,
-				itemsToScroll: 1
-			}
-		}
-	});
-	// partners slider
+
+	
 
 	// small slide
 	$(".small_slider_icon_place").click(function(){

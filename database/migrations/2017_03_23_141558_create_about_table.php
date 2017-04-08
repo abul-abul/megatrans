@@ -23,9 +23,9 @@ class CreateAboutTable extends Migration
             $table->longText('description_arm')->nullable();
             $table->longText('description_rus')->nullable();
             $table->string('alt')->nullable();
-            $table->string('text_en')->nullable();
-            $table->string('text_arm')->nullable();
-            $table->string('text_rus')->nullable();
+            $table->longText('text_en')->nullable();
+            $table->longText('text_arm')->nullable();
+            $table->longText('text_rus')->nullable();
             $table->timestamps();
         });
     }

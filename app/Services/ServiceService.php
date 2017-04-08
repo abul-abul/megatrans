@@ -79,6 +79,14 @@ class ServiceService implements ServiceInterface
         return $this->service->first();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getAllExpect($id)
+    {
+        return $this->service->where('id', '!=', $id)->get();
+    }
 
 
 

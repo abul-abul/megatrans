@@ -175,7 +175,7 @@
             <ul id="flexiselDemo1">
                 @foreach($partners as $partner)
                 <li>
-                    <a href="{{$partner->images}}">
+                    <a href="{{$partner->link}}">
                         <img alt="{{$partner->alt}}" src="/assets/images/partners-images/{{$partner->images}}" class="partners_logo"/>
                     </a>
                 </li>
@@ -188,5 +188,40 @@
 @endsection
 
 @section('script')
+    {!! HTML::script( asset('assets/user/js/jquery-flexisel.js') ) !!}
     {!! HTML::script( asset('assets/user/js/tracking.js') ) !!}
+    <script>
+        // partbers slider
+        $("#flexiselDemo1").flexisel();
+        $("#flexiselDemo2").flexisel({
+            visibleItems: 6,
+            itemsToScroll: 1,
+            animationSpeed: 700,
+            infinite: true,
+            navigationTargetSelector: null,
+            autoPlay: {
+                enable: false,
+                interval: 5000,
+                pauseOnHover: true
+            },
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint:600,
+                    visibleItems: 1,
+                    itemsToScroll: 1
+                },
+                landscape: {
+                    changePoint:900,
+                    visibleItems: 3,
+                    itemsToScroll: 1
+                },
+                tablet: {
+                    changePoint:1140,
+                    visibleItems: 5,
+                    itemsToScroll: 1
+                }
+            }
+        });
+        // partners slider
+    </script>
 @endsection

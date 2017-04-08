@@ -57,10 +57,10 @@
             </a>
         </div>
         <div class="up_header_small_icons">
-            <a href="Home.html" class="small_icons_links">
+            <a href="{{action('UsersController@getHome')}}" class="small_icons_links">
                 <img src="/assets/user/images/home.png" class="small_icons_img" />
             </a>
-            <a href="#" class="small_icons_links">
+            <a href="{{action('UsersController@getContact')}}" class="small_icons_links">
                 <img src="/assets/user/images/message.png" class="small_icons_img" />
             </a>
         </div>
@@ -71,60 +71,68 @@
 <header>
     <div class="header_center">
         <div class="header_logo_place">
-            <a href="Home.html">
+            <a href="{{action('UsersController@getHome')}}">
                 <img src="/assets/user/images/header_logo.png" class="header_logo" />
             </a>
         </div>
         <ul class="header_menu">
-            <li class="header_menu_li">
-                <a href="Services.html" class="header_menu_links">
+            @if(isset($serviceactive))
+                <li class="header_menu_li header_menu_active">
+            @else
+                <li class="header_menu_li">
+             @endif
+                <a href="#" class="header_menu_links">
                     ծառայություններ
                 </a>
                 <ul class="sub_menu_abs">
-                    <li class="sub_menu_li">
-                        <a href="Services.html" class="sub_menu_links">
-                            Երկաթուղային բեռնափոխադրում
-                        </a>
-                    </li>
-                    <li class="sub_menu_li">
-                        <a href="Services.html" class="sub_menu_links">
-                            Բեռնարկային բեռնափոխադրում
-                        </a>
-                    </li>
-                    <li class="sub_menu_li">
-                        <a href="Services.html" class="sub_menu_links">
-                            Ավտոմոբիլային բեռնափոխադրում
-                        </a>
-                    </li>
-                    <li class="sub_menu_li">
-                        <a href="Services.html" class="sub_menu_links">
-                            Օդային բեռնափոխադրում
-                        </a>
-                    </li>
-                    <li class="sub_menu_li">
-                        <a href="Services.html" class="sub_menu_links">
-                            հավաքական բեռնափոխադրում
-                        </a>
-                    </li>
+                    @foreach($services as $service)
+                        <li class="sub_menu_li">
+                            <a href="{{action('UsersController@getService',$service->id)}}" class="sub_menu_links">
+                                @if($lang == 'en')
+                                    {{$service->title_en}}
+                                @elseif($lang == 'ru')
+                                    {{$service->title_rus}}
+                                @elseif($lang == 'am')
+                                    {{$service->title_arm}}
+                                @endif
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
+            @if(isset($activeabout))
+            <li class="header_menu_li header_menu_active">
+            @else
             <li class="header_menu_li">
-                <a href="About.html" class="header_menu_links">
+            @endif
+                <a href="{{action('UsersController@getAbout')}}" class="header_menu_links">
                     ընկերություն
                 </a>
             </li>
-            <li class="header_menu_li">
-                <a href="Ogtakar.html" class="header_menu_links">
+            @if(isset($blogactive))
+                <li class="header_menu_li header_menu_active">
+            @else
+                <li class="header_menu_li">
+            @endif
+                <a href="{{action('UsersController@getBlog')}}" class="header_menu_links">
                     օգտակար նյութեր
                 </a>
             </li>
-            <li class="header_menu_li">
-                <a href="Contacts.html" class="header_menu_links">
+            @if(isset($contactactive))
+                <li class="header_menu_li header_menu_active">
+            @else
+                <li class="header_menu_li">
+            @endif
+                <a href="{{action('UsersController@getContact')}}" class="header_menu_links">
                     հետադարձ կապ
                 </a>
             </li>
-            <li class="header_menu_li">
-                <a href="Harcum.html" class="header_menu_links">
+            @if(isset($requestactive))
+                    <li class="header_menu_li header_menu_active">
+                @else
+                    <li class="header_menu_li">
+            @endif
+                <a href="{{action('UsersController@getRequest')}}" class="header_menu_links">
                     հարցում
                 </a>
             </li>
@@ -140,7 +148,7 @@
             </div>
             <ul class="header_menu_small">
                 <li class="menu_small_li">
-                    <a href="Services.html" class="small_menu_links">
+                    <a href="#" class="small_menu_links">
                         ծառայություններ
                     </a>
                     <ul class="sub_menu_small">
@@ -149,45 +157,25 @@
                                 Երկաթուղային բեռնափոխադրում
                             </a>
                         </li>
-                        <li class="small_sub_menu_li">
-                            <a href="Services.html" class="small_sub_menu_links">
-                                Բեռնարկային բեռնափոխադրում
-                            </a>
-                        </li>
-                        <li class="small_sub_menu_li">
-                            <a href="Services.html" class="small_sub_menu_links">
-                                Ավտոմոբիլային բեռնափոխադրում
-                            </a>
-                        </li>
-                        <li class="small_sub_menu_li">
-                            <a href="Services.html" class="small_sub_menu_links">
-                                Օդային բեռնափոխադրում
-                            </a>
-                        </li>
-                        <li class="small_sub_menu_li">
-                            <a href="Services.html" class="small_sub_menu_links">
-                                հավաքական բեռնափոխադրում
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="menu_small_li">
-                    <a href="About.html" class="small_menu_links">
+                    <a href="{{action('UsersController@getAbout')}}" class="small_menu_links">
                         ընկերություն
                     </a>
                 </li>
                 <li class="menu_small_li">
-                    <a href="Ogtakar.html" class="small_menu_links">
+                    <a href="{{action('UsersController@getBlog')}}" class="small_menu_links">
                         օգտակար նյութեր
                     </a>
                 </li>
                 <li class="menu_small_li">
-                    <a href="Contacts.html" class="small_menu_links">
+                    <a href="{{action('UsersController@getContact')}}" class="small_menu_links">
                         հետադարձ կապ
                     </a>
                 </li>
                 <li class="menu_small_li">
-                    <a href="Harcum.html" class="small_menu_links">
+                    <a href="{{action('UsersController@getRequest')}}" class="small_menu_links">
                         հարցում
                     </a>
                 </li>
@@ -405,7 +393,6 @@
 
     {!! HTML::script( asset('assets/user/js/jquery.js') ) !!}
     {!! HTML::script( asset('assets/user/js/bootstrap.min.js') ) !!}
-    {!! HTML::script( asset('assets/user/js/jquery-flexisel.js') ) !!}
     {!! HTML::script( asset('assets/user/js/coolclock.js') ) !!}
     {!! HTML::script( asset('assets/user/js/moreskins.js') ) !!}
     {!! HTML::script( asset('assets/user/js/init.js') ) !!}

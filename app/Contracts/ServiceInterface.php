@@ -45,6 +45,10 @@ interface ServiceInterface
      */
     public function getFirstRow();
 
-
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getAllExpect($id);
 
 }

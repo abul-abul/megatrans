@@ -25,9 +25,9 @@ class UsersController extends BaseController
      * @param ContactInterface $contactRepo
      * @param RequestInterface $requestRepo
      */
-    public function __construct(ContactInterface $contactRepo,RequestInterface $requestRepo)
+    public function __construct(ContactInterface $contactRepo,RequestInterface $requestRepo,ServiceInterface $serviceRepo)
     {
-        parent::__construct($contactRepo,$requestRepo);
+        parent::__construct($contactRepo,$requestRepo,$serviceRepo);
         $this->middleware('language');
     }
 
@@ -94,10 +94,11 @@ class UsersController extends BaseController
         $gallery = $blogGalleryRepo->getBlog($id);
         $data = [
             'gallerys' => $gallery,
-            'blogs' => $result,
+            'blog' => $result,
             'services' => $service,
             'blogactive' => 1
         ];
+
         return view('users.blog.blog-inner',$data);
     }
 
@@ -116,14 +117,26 @@ class UsersController extends BaseController
         return view('users.request.request',$data);
     }
 
+    /**
+     * @param Request $request
+     * @param RequestInterface $requestRepo
+     * @return mixed
+     */
     public function postRequest(request $request,RequestInterface $requestRepo)
     {
         $result = $request->all();
         $validator = Validator::make($result, [
-
+            'contact_person' => 'required',
+            'email' => 'required|email',
+            'tel' => 'required|numeric',
+            'cargo_description' => 'required',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
+        }else{
+            unset($result['_token']);
+            $requestRepo->createData($result);
+            return redirect()->back()->with('message','Your request sent successfully');
         }
     }
 
@@ -131,23 +144,39 @@ class UsersController extends BaseController
      * @param ContactInterface $contactRepo
      * @return View
      */
-    public function getContact(ContactInterface $contactRepo)
+    public function getContact(ContactInterface $contactRepo,ServiceInterface $serviceRepo)
     {
+        $service = $serviceRepo->getAll();
+
         $data = [
+            'services' => $service,
             'contactactive' => 1,
         ];
         return view('users.contact.contact',$data);
     }
 
+    /**
+     * @param Request $request
+     * @param ContactInterface $contactRepo
+     * @return mixed
+     */
     public function postContact(request $request,ContactInterface $contactRepo)
     {
         $result = $request->all();
         $validator = Validator::make($result, [
-
+            'name' => 'required',
+            'email' => 'required|email',
+            'team' => 'required',
+            'message' => 'required',
+            'team' => 'required',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
+        }else{
+            unset($result['_token']);
+            $contactRepo->createData($result);
         }
+        return redirect()->back()->with('message','Thanks for your message');
     }
 
     /**
@@ -162,7 +191,7 @@ class UsersController extends BaseController
         $data = [
             'services' => $service,
             'activeabout' => 1,
-            'abouts' => $result
+            'about' => $result
         ];
         return view('users.about.about',$data);
     }
@@ -176,12 +205,18 @@ class UsersController extends BaseController
     public function getService($id,ServiceInterface $serviceRepo,ServiceSkillInterface $skillRepo)
     {
         $result = $serviceRepo->getOne($id);
+        if(count($result) == ''){
+            abort(404);
+        }
+        $all_services = $serviceRepo->getAllExpect($id);
         $skills = $skillRepo->getService($id);
         $data = [
+            'services' => $all_services,
             'service' => $result,
             'skills' => $skills,
             'serviceactive' => 1
         ];
+
         return view('users.service.service',$data);
     }
 
