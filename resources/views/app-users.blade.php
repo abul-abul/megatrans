@@ -241,70 +241,70 @@
                         Forex quotes
                     </h2>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									audusd
-								</span>
-								<span class="forex_text_value">
-									0.7575
-								</span>
-								<span class="forex_text_value">
-									0.7578
-								</span>
+						<span class="forex_text_value">
+							audusd
+						</span>
+						<span class="forex_text_value">
+							0.7575
+						</span>
+						<span class="forex_text_value">
+							0.7578
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									eurchf
-								</span>
-								<span class="forex_text_value">
-									1.0795
-								</span>
-								<span class="forex_text_value">
-									1.0798
-								</span>
+						<span class="forex_text_value">
+							eurchf
+						</span>
+						<span class="forex_text_value">
+							1.0795
+						</span>
+						<span class="forex_text_value">
+							1.0798
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									eurgbp
-								</span>
-								<span class="forex_text_value">
-									0.8739
-								</span>
-								<span class="forex_text_value">
-									0.8742
-								</span>
+						<span class="forex_text_value">
+							eurgbp
+						</span>
+						<span class="forex_text_value">
+							0.8739
+						</span>
+						<span class="forex_text_value">
+							0.8742
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									eurjpy
-								</span>
-								<span class="forex_text_value">
-									122.45
-								</span>
-								<span class="forex_text_value">
-									122.48
-								</span>
+						<span class="forex_text_value">
+							eurjpy
+						</span>
+						<span class="forex_text_value">
+							122.45
+						</span>
+						<span class="forex_text_value">
+							122.48
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									eurusd
-								</span>
-								<span class="forex_text_value">
-									1.0678
-								</span>
-								<span class="forex_text_value">
-									1.0681
-								</span>
+						<span class="forex_text_value">
+							eurusd
+						</span>
+						<span class="forex_text_value">
+							1.0678
+						</span>
+						<span class="forex_text_value">
+							1.0681
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									gbpusd
-								</span>
-								<span class="forex_text_value">
-									1.2218
-								</span>
-								<span class="forex_text_value">
-									1.2221
-								</span>
+						<span class="forex_text_value">
+							gbpusd
+						</span>
+						<span class="forex_text_value">
+							1.2218
+						</span>
+						<span class="forex_text_value">
+							1.2221
+						</span>
                     </p>
                 </div>
                 <div class="forex_child">
@@ -312,70 +312,70 @@
                         Արտարժույթի  փոխարժեքը
                     </h2>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									usd
-								</span>
-								<span class="forex_text_value">
-									Առք
-								</span>
-								<span class="forex_text_value">
-									Վաճ
-								</span>
+						<span class="forex_text_value">
+							usd
+						</span>
+						<span class="forex_text_value">
+							Առք
+						</span>
+						<span class="forex_text_value">
+							Վաճ
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									usd
-								</span>
-								<span class="forex_text_value">
-									484.00
-								</span>
-								<span class="forex_text_value">
-									487.00
-								</span>
+						<span class="forex_text_value">
+							usd
+						</span>
+						<span class="forex_text_value">
+							484.00
+						</span>
+						<span class="forex_text_value">
+							487.00
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									rub
-								</span>
-								<span class="forex_text_value">
-									808
-								</span>
-								<span class="forex_text_value">
-									833
-								</span>
+						<span class="forex_text_value">
+							rub
+						</span>
+						<span class="forex_text_value">
+							808
+						</span>
+						<span class="forex_text_value">
+							833
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									eur
-								</span>
-								<span class="forex_text_value">
-									515.00
-								</span>
-								<span class="forex_text_value">
-									525.00
-								</span>
+						<span class="forex_text_value">
+							eur
+						</span>
+						<span class="forex_text_value">
+							515.00
+						</span>
+						<span class="forex_text_value">
+							525.00
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									gbp
-								</span>
-								<span class="forex_text_value">
-									585.00
-								</span>
-								<span class="forex_text_value">
-									600.00
-								</span>
+						<span class="forex_text_value">
+							gbp
+						</span>
+						<span class="forex_text_value">
+							585.00
+						</span>
+						<span class="forex_text_value">
+							600.00
+						</span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									chf
-								</span>
-								<span class="forex_text_value">
-									475.00
-								</span>
-								<span class="forex_text_value">
-									490.00
-								</span>
+						<span class="forex_text_value">
+							chf
+						</span>
+						<span class="forex_text_value">
+							475.00
+						</span>
+						<span class="forex_text_value">
+							490.00
+						</span>
                     </p>
                 </div>
             </div>

@@ -84,9 +84,15 @@
                     </a>
                 </div>
             @endforeach
-
         </div>
     </div>
 </div>
 <!-- more services -->
+@endsection
+
+@section('script')
+    {!! HTML::script( asset('assets/user/js/map.js') ) !!}
+    {!! HTML::script( asset('assets/user/js/google_map.js') ) !!}
+    @yield('script')
+
 @endsection
