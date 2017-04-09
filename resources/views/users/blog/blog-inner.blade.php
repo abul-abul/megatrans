@@ -7,11 +7,11 @@
 <div class="navigate_place">
     <div class="navigate_center">
 				<span class="navigate_text">
-					Գլխավոր էջ
+					{{trans('common.home_page')}}
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
 				</span>
 				<span class="navigate_text">
-					Օգտակար նյութեր
+					{{trans('common.useful')}}
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
 				</span>
     </div>
@@ -89,7 +89,7 @@
 <div class="more_services_place">
     <div class="more_services_center">
         <h2 class="other_title">
-            բեռնափոխադրման տեսակներ
+            {{trans('common.types_transport')}}
         </h2>
         <div class="more_services">
             @foreach($services as $service)

@@ -82,7 +82,7 @@
                 <li class="header_menu_li">
              @endif
                 <a href="#" class="header_menu_links">
-                    ծառայություններ
+                    {{trans('common.services')}}
                 </a>
                 <ul class="sub_menu_abs">
                     @foreach($services as $service)
@@ -106,7 +106,7 @@
             <li class="header_menu_li">
             @endif
                 <a href="{{action('UsersController@getAbout')}}" class="header_menu_links">
-                    ընկերություն
+                    {{trans('common.company')}}
                 </a>
             </li>
             @if(isset($blogactive))
@@ -115,7 +115,7 @@
                 <li class="header_menu_li">
             @endif
                 <a href="{{action('UsersController@getBlog')}}" class="header_menu_links">
-                    օգտակար նյութեր
+                   {{trans('common.useful')}}
                 </a>
             </li>
             @if(isset($contactactive))
@@ -124,7 +124,7 @@
                 <li class="header_menu_li">
             @endif
                 <a href="{{action('UsersController@getContact')}}" class="header_menu_links">
-                    հետադարձ կապ
+                   {{trans('common.contact')}}
                 </a>
             </li>
             @if(isset($requestactive))
@@ -133,7 +133,7 @@
                     <li class="header_menu_li">
             @endif
                 <a href="{{action('UsersController@getRequest')}}" class="header_menu_links">
-                    հարցում
+                    {{trans('common.request')}}
                 </a>
             </li>
         </ul>
@@ -149,34 +149,44 @@
             <ul class="header_menu_small">
                 <li class="menu_small_li">
                     <a href="#" class="small_menu_links">
-                        ծառայություններ
+                        {{trans('common.services')}}
+
                     </a>
                     <ul class="sub_menu_small">
+                        @foreach($services as $service)
                         <li class="small_sub_menu_li">
-                            <a href="Services.html" class="small_sub_menu_links">
-                                Երկաթուղային բեռնափոխադրում
+                            <a href="{{action('UsersController@getService',$service->id)}}" class="small_sub_menu_links">
+                                @if($lang == 'en')
+                                    {{$service->title_en}}
+                                @elseif($lang == 'ru')
+                                    {{$service->title_rus}}
+                                @elseif($lang == 'am')
+                                    {{$service->title_arm}}
+                                @endif
                             </a>
+
                         </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="menu_small_li">
                     <a href="{{action('UsersController@getAbout')}}" class="small_menu_links">
-                        ընկերություն
+                        {{trans('common.company')}}
                     </a>
                 </li>
                 <li class="menu_small_li">
                     <a href="{{action('UsersController@getBlog')}}" class="small_menu_links">
-                        օգտակար նյութեր
+                        {{trans('common.useful')}}
                     </a>
                 </li>
                 <li class="menu_small_li">
                     <a href="{{action('UsersController@getContact')}}" class="small_menu_links">
-                        հետադարձ կապ
+                        {{trans('common.contact')}}
                     </a>
                 </li>
                 <li class="menu_small_li">
                     <a href="{{action('UsersController@getRequest')}}" class="small_menu_links">
-                        հարցում
+                        {{trans('common.request')}}
                     </a>
                 </li>
             </ul>
@@ -199,28 +209,28 @@
         </div>
         <ul class="footer_menu">
             <li class="footer_menu_li">
-                <a href="Services.html" class="footer_menu_links">
-                    ծառայություններ
+                <a href="#" class="footer_menu_links">
+                    {{trans('common.services')}}
                 </a>
             </li>
             <li class="footer_menu_li">
-                <a href="About.html" class="footer_menu_links">
-                    ընկերություն
+                <a href="{{action('UsersController@getAbout')}}" class="footer_menu_links">
+                    {{trans('common.company')}}
                 </a>
             </li>
             <li class="footer_menu_li">
-                <a href="Ogtakar.html" class="footer_menu_links">
-                    օգտակար նյութեր
+                <a href="{{action('UsersController@getBlog')}}" class="footer_menu_links">
+                    {{trans('common.useful')}}
                 </a>
             </li>
             <li class="footer_menu_li">
-                <a href="Contacts.html" class="footer_menu_links">
-                    հետադարձ կապ
+                <a href="{{action('UsersController@getContact')}}" class="footer_menu_links">
+                    {{trans('common.contact')}}
                 </a>
             </li>
             <li class="footer_menu_li">
-                <a href="Harcum.html" class="footer_menu_links">
-                    հարցում
+                <a href="{{action('UsersController@getRequest')}}" class="footer_menu_links">
+                    {{trans('common.request')}}
                 </a>
             </li>
         </ul>
@@ -385,7 +395,7 @@
             </div>
         </div>
         <p class="copy_right">
-            ՄԵԳԱՏՐԱՆՍ ՍՊԸ բոլոր իրավունքները  պաշտպանված են 2017
+            {{trans('common.reserved')}}
         </p>
     </div>
 </footer>

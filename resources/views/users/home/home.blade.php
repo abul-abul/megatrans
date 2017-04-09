@@ -84,7 +84,8 @@
                 </p>
                 <a href="{{action('UsersController@getService',$service->id)}}" class="small_slider_more_link">
 					<span class="small_slider_more_text">
-						ԱՎԵԼԻՆ
+                        {{trans('common.more')}}
+
 					</span>
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
@@ -102,15 +103,15 @@
         <div class="online_center_child"></div>
         <div class="online_center_child">
             <h2 class="online_title">
-                բեռի օնլայն հետևում
+                {{trans('common.watching_online')}}
             </h2>
 
                 <label class="inp_title">
-                    կոնտեյների համարը
+                    {{trans('common.number_container')}}
                     <input type="number" name="conteiner_number" class="cont_number">
                 </label>
                 <label class="inp_title">
-                    փոխադրող
+                    {{trans('common.carrier')}}
                     <div class="carrier_place">
                         <div id="trackHost" class="select_place">
                             <p value="" class="sel_text">
@@ -169,7 +170,7 @@
 <section class="partners_place">
     <div class="partners_place_center">
         <h2 class="partners_title">
-            գործընկերները
+            {{trans('common.partners')}}
         </h2>
         <div class="partners_slide_place">
             <ul id="flexiselDemo1">

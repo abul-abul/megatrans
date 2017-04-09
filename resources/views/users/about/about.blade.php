@@ -72,7 +72,7 @@
 <div class="more_services_place">
     <div class="more_services_center">
         <h2 class="other_title">
-            բեռնափոխադրման տեսակներ
+           {{trans('common.types_transport')}}
         </h2>
         <div class="more_services">
             @foreach($services as $service)

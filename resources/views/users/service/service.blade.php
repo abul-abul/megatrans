@@ -72,7 +72,7 @@
                 </div>
                 <a href="Harcum.html">
                     <button class="qouestion_btn">
-                        ուղարկել հարցում
+                       {{trans('common.send_request')}}
                     </button>
                 </a>
             </div>
@@ -88,7 +88,7 @@
     <!-- other services -->
     <div class="other_services_place">
         <h2 class="other_title">
-            այլ բեռնափոխադրման տեսակներ
+            {{trans('common.other_types')}}
         </h2>
         <div class="other_services">
             @foreach($services as $service)

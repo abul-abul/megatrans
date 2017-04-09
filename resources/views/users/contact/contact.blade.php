@@ -5,12 +5,12 @@
     <div class="navigate_center">
         <span class="navigate_text">
             <a href="{{action('UsersController@getHome')}}">
-            Գլխավոր էջ
+            {{trans('common.home_page')}}
             </a>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
         </span>
         <span class="navigate_text">
-            Հետադարձ կապ
+            {{trans('common.contact')}}
             <i class="fa fa-angle-right" aria-hidden="true"></i>
         </span>
     </div>
@@ -22,7 +22,7 @@
     <div class="contacts_content_center">
         <div class="content_center_child">
             <h2 class="content_center_tilte">
-                ԿՈՆտակտներ
+                {{trans('common.contacts')}}
             </h2>
             <p class="content_center_text">
                 «ՄԵԳԱՏՐԱՆՍ» ՄԻՋԱԶԳԱՅԻՆ ԲԵՌՆԱՓՈԽԱԴՐՈՒՄՆԵՐԻ ԸՆԿԵՐՈՒԹՅՈՒՆ
@@ -59,7 +59,7 @@
                 {!! Form::text('email',null, ['class' => 'name','placeholder'=>'Էլ. փոստը']) !!}
                 {!! Form::text('team',null, ['class' => 'tema','placeholder'=>'Թեմա']) !!}
                 {!! Form::textarea('message',null, ['class' => 'textarea','placeholder'=>'Հաղորդագրություն']) !!}
-                <input type="submit" class="send" value="ուղարկել" />
+                <input type="submit" class="send" value="{{trans('common.send')}}" />
                 <p class="empty_fields">
                     Լրացրեք պարտադիր դաշտերը
                 </p>
@@ -74,7 +74,7 @@
 <div class="more_services_place">
     <div class="more_services_center">
         <h2 class="other_title">
-            բեռնափոխադրման տեսակներ
+            {{trans('common.types_transport')}}
         </h2>
         <div class="more_services">
             @foreach($services as $service)

@@ -5,12 +5,12 @@
     <div class="navigate_center">
         <span class="navigate_text">
             <a href="{{action('UsersController@getHome')}}">
-            Գլխավոր էջ
+            {{trans('common.home_page')}}
             </a>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
         </span>
         <span class="navigate_text">
-            Հարցում
+            {{trans('common.request')}}
             <i class="fa fa-angle-right" aria-hidden="true"></i>
         </span>
     </div>
@@ -21,7 +21,8 @@
 <div class="qouestion_content">
     <div class="qouestion_content_center">
         <h1 class="qouestion_title">
-            Հարցում
+            {{trans('common.request')}}
+
         </h1>
         @include('message')
         {!! Form::open(['action' => ['UsersController@postRequest']]) !!}
@@ -29,18 +30,18 @@
         <div class="qouestion_child">
             </div>
             <div class="qouestion_child">
-                {!! Form::text('company',null, ['class' => 'qouestion','placeholder'=>'Կազմակերպություն']) !!}
-                {!! Form::text('contact_person',null, ['class' => 'qouestion','placeholder'=>'Կոնտակտային անձ*']) !!}
-                {!! Form::text('tel',null, ['class' => 'qouestion','placeholder'=>'Հեռ.*']) !!}
-                {!! Form::text('email',null, ['class' => 'qouestion','placeholder'=>'Էլ-փոստ*']) !!}
-                {!! Form::text('cargo_description',null, ['class' => 'qouestion','placeholder'=>'Բեռի նկարագրություն*']) !!}
-                {!! Form::text('code',null, ['class' => 'qouestion','placeholder'=>'Կոդ']) !!}
-                {!! Form::text('number_and_types_of_railcars',null, ['class' => 'qouestion','placeholder'=>'Վագոնների քանակ և տեսակ']) !!}
-                {!! Form::text('cargo_gross_weight_in_one_railcar',null, ['class' => 'qouestion','placeholder'=>'Բեռի բրուտտո քաշը մեկ վագոնում (տ)']) !!}
-                {!! Form::text('cargo_total_gross_weight',null, ['class' => 'qouestion','placeholder'=>'Բեռի ընդհանուր բրուտտո քաշը (տ)']) !!}
-                {!! Form::text('un_number',null, ['class' => 'qouestion','placeholder'=>'Վտանգավորության կարգ, UN համար']) !!}
+                {!! Form::text('company',null, ['class' => 'qouestion','placeholder'=> trans("common.company") ]) !!}
+                {!! Form::text('contact_person',null, ['class' => 'qouestion','placeholder'=>trans('common.contact_person')]) !!}
+                {!! Form::text('tel',null, ['class' => 'qouestion','placeholder'=>trans('common.telephone')]) !!}
+                {!! Form::text('email',null, ['class' => 'qouestion','placeholder'=>trans('common.email')]) !!}
+                {!! Form::text('cargo_description',null, ['class' => 'qouestion','placeholder'=>trans('common.cargo_description')]) !!}
+                {!! Form::text('code',null, ['class' => 'qouestion','placeholder'=>trans('common.code')]) !!}
+                {!! Form::text('number_and_types_of_railcars',null, ['class' => 'qouestion','placeholder'=>trans('common.types_wagon')]) !!}
+                {!! Form::text('cargo_gross_weight_in_one_railcar',null, ['class' => 'qouestion','placeholder'=>trans('common.weight_per_car_loa')]) !!}
+                {!! Form::text('cargo_total_gross_weight',null, ['class' => 'qouestion','placeholder'=>trans('common.total_gross')]) !!}
+                {!! Form::text('un_number',null, ['class' => 'qouestion','placeholder'=>trans('common.hazard_class_un_for')]) !!}
 
-                <input type="submit" name="send" class="send" value="ուղարկել" />
+                <input type="submit" name="send" class="send" value="{{trans('common.send')}}" />
                 <p class="empty_fields">
                     Լրացրեք պարտադիր դաշտերը
                 </p>
@@ -55,7 +56,7 @@
 <div class="more_services_place">
     <div class="more_services_center">
         <h2 class="other_title">
-            բեռնափոխադրման տեսակներ
+            {{trans('common.types_transport')}}
         </h2>
         <div class="more_services">
             @foreach($services as $service)
