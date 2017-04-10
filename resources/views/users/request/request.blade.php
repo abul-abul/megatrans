@@ -22,25 +22,22 @@
     <div class="qouestion_content_center">
         <h1 class="qouestion_title">
             {{trans('common.request')}}
-
         </h1>
         @include('message')
         {!! Form::open(['action' => ['UsersController@postRequest']]) !!}
-
-        <div class="qouestion_child">
-            </div>
             <div class="qouestion_child">
                 {!! Form::text('company',null, ['class' => 'qouestion','placeholder'=> trans("common.company") ]) !!}
                 {!! Form::text('contact_person',null, ['class' => 'qouestion','placeholder'=>trans('common.contact_person')]) !!}
                 {!! Form::text('tel',null, ['class' => 'qouestion','placeholder'=>trans('common.telephone')]) !!}
                 {!! Form::text('email',null, ['class' => 'qouestion','placeholder'=>trans('common.email')]) !!}
                 {!! Form::text('cargo_description',null, ['class' => 'qouestion','placeholder'=>trans('common.cargo_description')]) !!}
+            </div>
+            <div class="qouestion_child">
                 {!! Form::text('code',null, ['class' => 'qouestion','placeholder'=>trans('common.code')]) !!}
                 {!! Form::text('number_and_types_of_railcars',null, ['class' => 'qouestion','placeholder'=>trans('common.types_wagon')]) !!}
                 {!! Form::text('cargo_gross_weight_in_one_railcar',null, ['class' => 'qouestion','placeholder'=>trans('common.weight_per_car_loa')]) !!}
                 {!! Form::text('cargo_total_gross_weight',null, ['class' => 'qouestion','placeholder'=>trans('common.total_gross')]) !!}
                 {!! Form::text('un_number',null, ['class' => 'qouestion','placeholder'=>trans('common.hazard_class_un_for')]) !!}
-
                 <input type="submit" name="send" class="send" value="{{trans('common.send')}}" />
                 <p class="empty_fields">
                     Լրացրեք պարտադիր դաշտերը
