@@ -16,6 +16,10 @@ class BaseController extends Controller
      */
     public $language;
 
+
+
+
+    private $carrency = 'cache/currency.xml';
     /**
      * BaseController constructor.
      * @param ContactInterface $contactRepo
@@ -37,6 +41,23 @@ class BaseController extends Controller
             'lang' => $this->language,
             'currentPathWithoutLocale'  => $this->currentPathWithoutLocale,
         ];
+
+        $url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5";
+        $curl = curl_init($url);
+        if ( $curl ) {
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $page = curl_exec($curl);
+            curl_close($curl);
+            unset($curl);
+            $xml = new \SimpleXMLElement($page);
+            $data['usd'] = $xml->row[2]->exchangerate;
+            $data['eur'] = $xml->row[0]->exchangerate;
+            $data['rus'] = $xml->row[1]->exchangerate;
+
+        }
+
         view()->share($data);
     }
+
+
 }

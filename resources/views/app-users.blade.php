@@ -309,17 +309,17 @@
                 </div>
                 <div class="forex_child">
                     <h2 class="forex_title">
-                        Արտարժույթի  փոխարժեքը
+                       {{trans('common.currency_exchange')}}
                     </h2>
                     <p class="forex_text">
 								<span class="forex_text_value">
 									usd
 								</span>
 								<span class="forex_text_value">
-									Առք
+									{{trans('common.buy')}}
 								</span>
 								<span class="forex_text_value">
-									Վաճ
+									{{trans('common.sale')}}
 								</span>
                     </p>
                     <p class="forex_text">
@@ -327,10 +327,10 @@
 									usd
 								</span>
 								<span class="forex_text_value">
-									484.00
+									{{$usd['buy'][0]}}
 								</span>
 								<span class="forex_text_value">
-									487.00
+									{{$usd['sale'][0]}}
 								</span>
                     </p>
                     <p class="forex_text">
@@ -338,10 +338,10 @@
 									rub
 								</span>
 								<span class="forex_text_value">
-									808
+									{{$rus['buy'][0]}}
 								</span>
 								<span class="forex_text_value">
-									833
+									{{$rus['sale'][0]}}
 								</span>
                     </p>
                     <p class="forex_text">
@@ -349,34 +349,13 @@
 									eur
 								</span>
 								<span class="forex_text_value">
-									515.00
+									{{$eur['buy'][0]}}
 								</span>
 								<span class="forex_text_value">
-									525.00
+									{{$eur['sale'][0]}}
 								</span>
                     </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									gbp
-								</span>
-								<span class="forex_text_value">
-									585.00
-								</span>
-								<span class="forex_text_value">
-									600.00
-								</span>
-                    </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									chf
-								</span>
-								<span class="forex_text_value">
-									475.00
-								</span>
-								<span class="forex_text_value">
-									490.00
-								</span>
-                    </p>
+
                 </div>
             </div>
             <div class="clock_place">

@@ -28,9 +28,8 @@ return [
     'total_gross' => 'The total gross weight of cargo (tons)',
     'hazard_class_un_for' => 'Hazard Class, UN for',
     'contacts' => 'Contacts',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'currency_exchange' => 'Currency exchange',
+    'buy' => 'buy',
+    'sale' => 'sale',
 
 ];
