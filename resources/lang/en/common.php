@@ -31,5 +31,13 @@ return [
     'currency_exchange' => 'Currency exchange',
     'buy' => 'buy',
     'sale' => 'sale',
-
+    'map' => 'map',
+    'write_a_letter' => 'write a letter',
+    'name' => 'Name',
+    'tema' => 'Tema',
+    'message' => 'message',
+    'mega_message1' => '"MEGATRANS" INTERNATIONAL TRANSPORTATION COMPANY Armenia, 0005, Yerevan, Tigran Mets bck. 5/16',
+    'tel' => 'phone.',
+    'mob' => 'Mob',
+    'moscov' => 'Moscow'
 ];

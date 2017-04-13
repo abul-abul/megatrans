@@ -150,7 +150,6 @@
                 <li class="menu_small_li">
                     <a href="#" class="small_menu_links">
                         {{trans('common.services')}}
-
                     </a>
                     <ul class="sub_menu_small">
                         @foreach($services as $service)
@@ -236,125 +235,126 @@
         </ul>
         <div class="footer_more_place">
             <div class="forex_place">
-                <div class="forex_child">
-                    <h2 class="forex_title">
-                        Forex quotes
-                    </h2>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									audusd
-								</span>
-								<span class="forex_text_value">
-									0.7575
-								</span>
-								<span class="forex_text_value">
-									0.7578
-								</span>
-                    </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									eurchf
-								</span>
-								<span class="forex_text_value">
-									1.0795
-								</span>
-								<span class="forex_text_value">
-									1.0798
-								</span>
-                    </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									eurgbp
-								</span>
-								<span class="forex_text_value">
-									0.8739
-								</span>
-								<span class="forex_text_value">
-									0.8742
-								</span>
-                    </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									eurjpy
-								</span>
-								<span class="forex_text_value">
-									122.45
-								</span>
-								<span class="forex_text_value">
-									122.48
-								</span>
-                    </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									eurusd
-								</span>
-								<span class="forex_text_value">
-									1.0678
-								</span>
-								<span class="forex_text_value">
-									1.0681
-								</span>
-                    </p>
-                    <p class="forex_text">
-								<span class="forex_text_value">
-									gbpusd
-								</span>
-								<span class="forex_text_value">
-									1.2218
-								</span>
-								<span class="forex_text_value">
-									1.2221
-								</span>
-                    </p>
-                </div>
+                {{--<div class="forex_child">--}}
+                    {{--<h2 class="forex_title">--}}
+                        {{--Forex quotes--}}
+                    {{--</h2>--}}
+                    {{--<p class="forex_text">--}}
+						{{--<span class="forex_text_value">--}}
+							{{--audusd--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--0.7575--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--0.7578--}}
+						{{--</span>--}}
+                    {{--</p>--}}
+                    {{--<p class="forex_text">--}}
+						{{--<span class="forex_text_value">--}}
+							{{--eurchf--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--1.0795--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--1.0798--}}
+						{{--</span>--}}
+                    {{--</p>--}}
+                    {{--<p class="forex_text">--}}
+						{{--<span class="forex_text_value">--}}
+							{{--eurgbp--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--0.8739--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--0.8742--}}
+						{{--</span>--}}
+                    {{--</p>--}}
+                    {{--<p class="forex_text">--}}
+						{{--<span class="forex_text_value">--}}
+							{{--eurjpy--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--122.45--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--122.48--}}
+						{{--</span>--}}
+                    {{--</p>--}}
+                    {{--<p class="forex_text">--}}
+						{{--<span class="forex_text_value">--}}
+							{{--eurusd--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--1.0678--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--1.0681--}}
+						{{--</span>--}}
+                    {{--</p>--}}
+                    {{--<p class="forex_text">--}}
+						{{--<span class="forex_text_value">--}}
+							{{--gbpusd--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--1.2218--}}
+						{{--</span>--}}
+						{{--<span class="forex_text_value">--}}
+							{{--1.2221--}}
+						{{--</span>--}}
+                    {{--</p>--}}
+                {{--</div>--}}
                 <div class="forex_child">
                     <h2 class="forex_title">
                        {{trans('common.currency_exchange')}}
                     </h2>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									usd
-								</span>
-								<span class="forex_text_value">
-									{{trans('common.buy')}}
-								</span>
-								<span class="forex_text_value">
-									{{trans('common.sale')}}
-								</span>
+                        <span class="forex_text_value">
+                            usd
+                        </span>
+                        <span class="forex_text_value">
+                            {{trans('common.buy')}}
+                        </span>
+                        <span class="forex_text_value">
+                            {{trans('common.sale')}}
+                        </span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									usd
-								</span>
-								<span class="forex_text_value">
-									{{$usd['buy'][0]}}
-								</span>
-								<span class="forex_text_value">
-									{{$usd['sale'][0]}}
-								</span>
+                        <span class="forex_text_value">
+                            usd
+                        </span>
+                        <span class="forex_text_value">
+                            {{$usd['buy'][0]}}
+                        </span>
+                        <span class="forex_text_value">
+                            {{$usd['sale'][0]}}
+                        </span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									rub
-								</span>
-								<span class="forex_text_value">
-									{{$rus['buy'][0]}}
-								</span>
-								<span class="forex_text_value">
-									{{$rus['sale'][0]}}
-								</span>
+                        <span class="forex_text_value">
+                            rub
+                        </span>
+                        <span class="forex_text_value">
+                            {{$rus['buy'][0]}}
+                        </span>
+                        <span class="forex_text_value">
+                            {{$rus['sale'][0]}}
+                        </span>
                     </p>
                     <p class="forex_text">
-								<span class="forex_text_value">
-									eur
-								</span>
-								<span class="forex_text_value">
-									{{$eur['buy'][0]}}
-								</span>
-								<span class="forex_text_value">
-									{{$eur['sale'][0]}}
-								</span>
+                        <span class="forex_text_value">
+                            eur
+                        </span>
+                        <span class="forex_text_value">
+                            {{$eur['buy'][0]}}
+                        </span>
+                        <span class="forex_text_value">
+                            {{$eur['sale'][0]}}
+                        </span>
                     </p>
+
 
                 </div>
             </div>

@@ -1,9 +1,12 @@
 @extends('app-users')
 @section('users-content')
 <!-- about bg place -->
+@if($about != null)
 <div style="background:url('/assets/images/about-images/{{$about->images}}')" class="about_bg_place">
     <div class="about_bg_center">
+
         <h1 class="about_title">
+
             @if($lang == 'en')
                 {{$about->title_en}}
             @elseif($lang == 'ru')
@@ -22,20 +25,27 @@
                 {{$about->description_arm}}
             @endif
         </p>
+
+
+
     </div>
 </div>
+@endif
 <!-- about bg place -->
 <!-- about content -->
 <div class="about_content">
     <div class="about_center">
         <div class="about_center_child">
             <p class="ogtakar_inner_text">
-                @if($lang == 'en')
-                    {{$about->text_en}}
-                @elseif($lang == 'ru')
-                    {{$about->text_rus}}
-                @elseif($lang == 'am')
-                    {{$about->text_arm}}
+                @if($about != null)
+                    @if($lang == 'en')
+                        {{$about->text_en}}
+                    @elseif($lang == 'ru')
+                        {{$about->text_rus}}
+                    @elseif($lang == 'am')
+                        {{$about->text_arm}}
+                    @endif
+                 @else
                 @endif
             </p>
             {{--<p class="ogtakar_inner_text">--}}
@@ -75,6 +85,7 @@
            {{trans('common.types_transport')}}
         </h2>
         <div class="more_services">
+            @if(count($services) != "")
             @foreach($services as $service)
             <div class="more_services_child">
                 <a href="{{action('UsersController@getService',$service->id)}}" class="other_links">
@@ -82,7 +93,7 @@
                 </a>
             </div>
             @endforeach
-
+            @endif
         </div>
     </div>
 </div>

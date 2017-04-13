@@ -17,7 +17,7 @@ function initMap() {
 
 
     var image = {
-      url: 'images/map.png',
+      url: '/assets/user/images/map.png',
 
     scaledSize: new google.maps.Size(20, 40), // scaled size
 
